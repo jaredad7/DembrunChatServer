@@ -70,10 +70,13 @@ public class ServerMain
                 {
                     String input = in.readLine();
                     
-                    //Send user message to all users
-                    for(PrintWriter pw : users)
+                    //Send user message to all users if not null
+                    if(input != null)
                     {
-                    	pw.println(username + ": " + input);
+	                    for(PrintWriter pw : users)
+	                    {
+	                    	pw.println(username + ": " + input);
+	                    }
                     }
                 }
                 
