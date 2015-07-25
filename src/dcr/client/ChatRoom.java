@@ -31,6 +31,7 @@ public class ChatRoom
 	private JFrame frame;
 	private BufferedReader in;
     private PrintWriter out;
+    private final String user;
 	private final JTextArea messages = new JTextArea(35, 23);
 	private final JTextField comment = new JTextField(20);
 	private final JButton send = new JButton("Send");
@@ -43,6 +44,8 @@ public class ChatRoom
 	 */
 	public ChatRoom(String addr, String user) 
 	{
+		//Set user
+		this.user = user;
 		//Connect to server
 		connect(addr);
 		
@@ -80,6 +83,8 @@ public class ChatRoom
 			System.out.println(e.getMessage());
 			System.exit(-1);
 		}
+		
+		out.println(user);
         
 	}
 	
