@@ -2,7 +2,7 @@
 
 A simple chat client and server project I've been working on. It works similarly to an irc channel, but it's a lot more basic. 
 
-Over time, I hope to have it grow into something all its own. Documentation will be extensive, and I will handle all of it. If you add a feature, I'll do a thorough review, and will need documentation from you explaining what you added. 
+Over time, I hope to have it grow into something all its own. Documentation will be extensive, and I will handle all of it. If you add a feature, I'll do a thorough review, and will need documentation from you explaining what you added. I've been using eclipse for the project so far. Adding the directory to your eclipse workspace should make the project appear in the eclipse project explorer
 
 ---
 
