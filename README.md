@@ -7,3 +7,14 @@ Over time, I hope to have it grow into something all its own. Documentation will
 ---
 
 I expect all non-constructor methods to be documented properly with [javadoc](http://www.oracle.com/technetwork/articles/java/index-137868.html), including a short description of each parameter, return, etc, and the purpose of the method. All new classes need an @author tag in their javadoc with a description of the class's purpose.
+
+---
+
+##Specifications for release 2##
+
+- Optional password authentication with server
+- Server announces when new user connects
+- Server announces when user disconnects
+- System commands can be sent to server and response received
+ -  time (returns the system time)
+ -  users (returns a list of logged in users)
