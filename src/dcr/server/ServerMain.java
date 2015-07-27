@@ -84,6 +84,15 @@ public class ServerMain
 	                    	pw.println(username + ": " + input);
 	                    }
                     }
+                    else
+                    {
+                    	//Announce that the user has disconnected and break out of while loop
+                    	for(PrintWriter pw : users)
+	                    {
+	                    	pw.println(username + " has disconnected.");
+	                    }
+                    	break;
+                    }
                 }
                 
             } catch (IOException e) 
