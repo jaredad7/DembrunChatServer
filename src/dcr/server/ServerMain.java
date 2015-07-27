@@ -66,6 +66,12 @@ public class ServerMain
                 username = in.readLine();
                 users.add(out);
                 
+                //Send message to all users
+                for(PrintWriter pw : users)
+                {
+                	pw.println(username + " has joined the chatroom!");
+                }
+                
                 while (true) 
                 {
                     String input = in.readLine();
