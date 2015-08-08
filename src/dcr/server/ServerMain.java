@@ -17,6 +17,7 @@ public class ServerMain
 {
 	private static final int PORT = 2025;
 	private static final List<PrintWriter> users = new ArrayList();
+	private static String password = "default";
 	
 	/**
 	 * @param args
@@ -24,6 +25,10 @@ public class ServerMain
 	public static void main(String[] args) throws Exception 
 	{
 	    ServerSocket listener = new ServerSocket(PORT);
+	    if(args.length > 0)
+	    {
+	    	password = args[0];
+	    }
 	    try 
 	    {
 	        while (true) 
@@ -63,38 +68,44 @@ public class ServerMain
 
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-                username = in.readLine();
-                users.add(out);
-                
-                //Send message to all users
-                for(PrintWriter pw : users)
+                if(password.equals(in.readLine()))
                 {
-                	pw.println(username + " has joined the chatroom!");
+	                username = in.readLine();
+	                users.add(out);
+	                
+	                //Send message to all users
+	                for(PrintWriter pw : users)
+	                {
+	                	pw.println(username + " has joined the chatroom!");
+	                }
+	                
+	                while (true) 
+	                {
+	                    String input = in.readLine();
+	                    
+	                    //Send user message to all users if not null
+	                    if(input != null)
+	                    {
+		                    for(PrintWriter pw : users)
+		                    {
+		                    	pw.println(username + ": " + input);
+		                    }
+	                    }
+	                    else
+	                    {
+	                    	//Announce that the user has disconnected and break out of while loop
+	                    	for(PrintWriter pw : users)
+		                    {
+		                    	pw.println(username + " has disconnected.");
+		                    }
+	                    	break;
+	                    }
+	                }
                 }
-                
-                while (true) 
+                else
                 {
-                    String input = in.readLine();
-                    
-                    //Send user message to all users if not null
-                    if(input != null)
-                    {
-	                    for(PrintWriter pw : users)
-	                    {
-	                    	pw.println(username + ": " + input);
-	                    }
-                    }
-                    else
-                    {
-                    	//Announce that the user has disconnected and break out of while loop
-                    	for(PrintWriter pw : users)
-	                    {
-	                    	pw.println(username + " has disconnected.");
-	                    }
-                    	break;
-                    }
+                	out.println("Invalid password");
                 }
-                
             } catch (IOException e) 
             {
                 System.out.println("Error handling client");

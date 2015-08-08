@@ -42,12 +42,12 @@ public class ChatRoom
 	 * @param addr - the address of the chat server
 	 * @param user - the desired username
 	 */
-	public ChatRoom(String addr, String user) 
+	public ChatRoom(String addr, String pass, String user) 
 	{
 		//Set user
 		this.user = user;
 		//Connect to server
-		connect(addr);
+		connect(addr, pass);
 		
 		//Build the JFrame
 		frameSetupAndBuild();
@@ -69,7 +69,7 @@ public class ChatRoom
 	 * Prints an error message to stdout and exits if exception caught
 	 * @param addr - the remote address to connect to
 	 */
-	private void connect(String addr)
+	private void connect(String addr, String pass)
 	{
 		Socket socket;
 		try 
@@ -84,6 +84,7 @@ public class ChatRoom
 			System.exit(-1);
 		}
 		
+		out.println(pass);
 		out.println(user);
         
 	}

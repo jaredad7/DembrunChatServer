@@ -33,8 +33,10 @@ public class ClientMain
 	 */
 	private static final JFrame frame = new JFrame("DembrunChatRoom Client Setup");
 	private static final JLabel addressLabel = new JLabel("Server Address:");
+	private static final JLabel passwordLabel = new JLabel("Server Password:");
 	private static final JLabel usernameLabel = new JLabel("Desired Username:");
 	private static final JTextField addressField = new JTextField(15);
+	private static final JTextField passwordField = new JTextField(15);
 	private static final JTextField usernameField = new JTextField(15);
 	private static final JButton submit = new JButton("Connect to Server");
 	private static boolean addedWarning = false;
@@ -55,6 +57,8 @@ public class ClientMain
 		//Add the components to the initial JFrame
 		frame.getContentPane().add(addressLabel);
 		frame.getContentPane().add(addressField);
+		frame.getContentPane().add(passwordLabel);
+		frame.getContentPane().add(passwordField);
 		frame.getContentPane().add(usernameLabel);
 		frame.getContentPane().add(usernameField);
 		
@@ -69,12 +73,13 @@ public class ClientMain
 			{				
 				//Get data
 				String addr = addressField.getText();
+				String pass = passwordField.getText();
 				String user = usernameField.getText();
 				
 				//Check both are not default state
 				if(!addr.trim().equals("") && !user.trim().equals(""))
 				{
-					connect(addr, user);
+					connect(addr, pass, user);
 				}
 				else if(!addedWarning) //Notify user they must not be null
 				{
@@ -99,9 +104,9 @@ public class ClientMain
 	 * Creates a new Chatroom object, which handles its own JFrame
 	 * Closes the JFrame in this class once finished
 	 */
-	public static void connect(String addr, String user)
+	public static void connect(String addr, String pass, String user)
 	{
-		new ChatRoom(addr, user);
+		new ChatRoom(addr, pass, user);
 		frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 	}
 }
