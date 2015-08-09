@@ -188,6 +188,8 @@ public class ChatRoom
 				public void run()
 				{
 					String response = "initial string";
+					
+					
 					while(true)
 					{
 						try 
@@ -198,8 +200,13 @@ public class ChatRoom
 							//Be silent until real data is received
 							continue;
 						}
+						if(response.equals("Invalid password\n"))
+						{
+							break;
+						}
 						messages.append(response);
 					}
+					System.exit(-1);
 				}
 			};
 			listen.start();

@@ -51,6 +51,9 @@ public class ClientMain
 	 */
 	public static void main(String[] args) 
 	{
+		//Make password text default
+		passwordField.setText("default");
+		
 		//Set content pane to gridlayout on a JPanel
 		frame.setContentPane(new JPanel(new GridLayout(4, 2, 0, 10)));
 		
