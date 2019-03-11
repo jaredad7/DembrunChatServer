@@ -16,5 +16,5 @@ I expect all non-constructor methods to be documented properly with [javadoc](ht
 - Server announces when new user connects
 - Server announces when user disconnects
 - System commands can be sent to server and response received
- -  time (returns the system time)
- -  users (returns a list of logged in users)
+ - time (returns the system time)
+ - users (returns a list of logged in users)
